@@ -1,17 +1,5 @@
-/* module.exports = {
-  // 配置别名
-  configureWebpack: {
-    resolve: {
-      alias: {
-        views: '@/views',
-        components: '@/components',
-        store: '@/store',
-        router: '@/router',
-        assets: '@/assets'
-      }
-    }
-  }
-} */
+let registerRouter = require('./backend/router')
+
 module.exports = {
   css: {
     loaderOptions: {
@@ -24,5 +12,9 @@ module.exports = {
       },
     },
   },
-  lintOnSave: false,
+  devServer: {
+    before (app) {
+      registerRouter(app)
+    }
+  }
 };
